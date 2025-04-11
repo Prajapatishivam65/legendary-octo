@@ -5,7 +5,7 @@ import sseRoutes from "./sseRoutes";
 const router = Router();
 
 router.use("/auth", authRoutes);
-router.use("/sse", sseRoutes);
+router.use("/test", sseRoutes);
 
 // Health check route
 router.get("/health", (req, res) => {

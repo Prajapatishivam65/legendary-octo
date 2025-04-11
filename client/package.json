@@ -10,11 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.9.0",
     "@radix-ui/react-slot": "^1.1.2",
     "@tailwindcss/vite": "^4.0.15",
     "axios": "^1.8.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "config": "^3.3.12",
     "dotenv": "^16.4.7",
     "lucide-react": "^0.483.0",
     "react": "^19.0.0",

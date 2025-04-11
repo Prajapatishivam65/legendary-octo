@@ -3,12 +3,33 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import {
   createTransport,
   getTransportBySessionId,
-} from "../transports/sseTransport.js";
+} from "../transports/sseTransport";
+import { z } from "zod";
 
 const server = new McpServer({
   name: "example-server",
   version: "1.0.0",
 });
+
+server.tool(
+  "addTwoNumbers",
+  "Add two numbers",
+  {
+    a: z.number(),
+    b: z.number(),
+  },
+  async (arg: any) => {
+    const { a, b } = arg;
+    return {
+      content: [
+        {
+          type: "text",
+          text: `The sum of ${a} and ${b} is ${a + b}`,
+        },
+      ],
+    };
+  }
+);
 
 export const handleSSE = async (_req: Request, res: Response) => {
   const transport = createTransport(res);
