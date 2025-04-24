@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Client } from "@modelcontextprotocol/sdk/client";
-import { SSEClientTransport } from "@modelcontextprotocol/sdk/client/transports/sse";
+import { SSEClientTransport } from "@modelcontextprotocol/sdk/transports/sse";
 
 type Props = {};
 
@@ -20,7 +20,16 @@ const ModelContext: React.FC<Props> = (props) => {
         setIsConnected(true);
         console.log("connected To the Server");
 
-        const tools = await mcpClient.listTools.tools;
+        const tools = (await mcpClient.listTools.tools()).map((tool: any) => {
+          return {
+            name: tool.name,
+            description: tool.description,
+            parameters: {
+              type: tool.inputSchema.type,
+              properties: tool.inputSchema.properties,
+            },
+          };
+        });
         console.log("Available tools:", tools);
       })
       .catch((error: any) => {
