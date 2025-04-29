@@ -19,6 +19,9 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, cookie_parser_1.default)());
 // Routes
 app.use("/api", routes_1.default);
+app.get("/", (req, res) => {
+    res.send("Welcome to the ModelContext Protocol server!");
+});
 // Error handling middleware
 app.use(errorHandler_1.errorHandler);
 exports.default = app;

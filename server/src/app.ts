@@ -18,6 +18,10 @@ app.use(cookieParser());
 // Routes
 app.use("/api", routes);
 
+app.get("/", (req, res) => {
+  res.send("Welcome to the ModelContext Protocol server!");
+});
+
 // Error handling middleware
 app.use(errorHandler);
 

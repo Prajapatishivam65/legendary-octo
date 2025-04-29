@@ -5,6 +5,7 @@ import SignupPage from "./pages/SignupPage";
 import SigninPage from "./pages/SigninPage";
 import UserData from "./components/custom/UserData";
 import { useAuthContext } from "./context/AuthContext";
+import Dashboard from "@/pages/dashboard";
 
 function App() {
   const { authUser, setAuthUser, isLoading } = useAuthContext();
@@ -15,6 +16,7 @@ function App() {
       <Route path="/signup" element={<SignupPage />} />
       <Route path={"/signin"} element={<SigninPage />} />
       <Route path={"/user"} element={<UserData />} />
+      <Route path={"/dashboard"} element={<Dashboard />} />
     </Routes>
   );
 }
